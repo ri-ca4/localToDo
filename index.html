@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>My To Do</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<link rel="stylesheet" href="C:\Users\justm\Desktop\cbc14\localToDo\CSS\bootstrap.min.css">-->
+        <link rel="stylesheet" href="C:\Users\justm\Desktop\cbc14\localToDo\CSS\main.css">
+    </head>
+    <body onload="">
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+            <div>
+                <div>
+                    <h1>To-Do</h1>
+                </div>
+                <div>
+                    <form id="newTaskForm">
+                        <p id="paraHide"><a href="#" id="hideForm">View Tasks</a></p>
+                        <fieldset>
+                            <div>
+                                <label for="taskName">Task:</label>
+                                <input type="text" id="taskName">
+                            </div>
+                            <div>
+                                <label for="descrip">Details:</label>
+                                <textarea id="descrip" maxlength="300" rows="4"></textarea>
+                                </div>
+                            <div>
+                                <label for="priority"></label>
+                                <select id="priority" name="priority">
+                                    <option name="priority" value="5">Urgent</option>
+                                    <option name="priority" value="4">High</option>
+                                    <option name="priority" value="3">Normal</option>
+                                    <option name="priority" value="2">Low</option>
+                                    <option name="priority" value="1">None</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="deadline">Deadline:</label>
+                                <input id="deadline" type="date">
+                            </div>
+                            <div>
+                                <input id="submitTask" type="submit" value="Add Task" >
+                                <input type="reset" value="Cancel">
+                            </div>
+                        </fieldset>    
+                    </form>
+                </div>
+
+                <div id="toDoArea">
+                    <div>
+                    <div>
+                        <h2></h2>
+                        <p><a href="#" id="showForm">Create New Task</a></p>
+                    </div>
+                </div>
+                <div>
+                    <button id="removeTasks">Remove Completed Tasks</button>
+                    <button id="sortPriority">Sort by Priority</button>
+                    <button id="sortDate">Sort by Deadline</button>
+                </div>
+                <div>
+                    <div id="toDoData"></div>
+                    <div>
+                        <button id="removeTasks">Remove Completed Tasks</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+
+        <script src="C:\Users\justm\Desktop\cbc14\localToDo\javascript\jquery.min.js" async defer></script>
+        <!--<script src="C:\Users\justm\Desktop\cbc14\localToDo\javascript\bootstrap.min.js" async defer></script>-->
+        <script src="C:\Users\justm\Desktop\cbc14\localToDo\javascript\main.js" async defer></script>
+    </body>
+</html>
