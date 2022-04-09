@@ -109,6 +109,29 @@ function displayList() { //function to display data
     //set class for priority
 };
     
+function removeCompleted() {//function to remove checked items
+    var check = document.getElementsByClassName("removeTask");
+    var del = [];//Array.from(checked);
+    for (var i = 0; check[i]; i++) {
+        if (check[i].checked) {
+        index = check[i].value;
+        del.push(index);
+        }
+    };
+    console.log(del);
+    debugger;
+    while (del.length > 0) {
+        myArray.splice(i, 1);
+        var i = del.pop();
+
+      };
+    displayList();
+};
+
+        // //event listener for deleting task
+        // var complete = document.getElementById(removeTasks);
+        // complete.addEventListener('click', removeCompleted());
+
 //event listener for submit button
 var submitBtn = document.getElementById("submitTask");
 submitBtn.addEventListener('click', function(e){
