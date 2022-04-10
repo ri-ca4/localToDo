@@ -22,7 +22,7 @@ function storageAvailable() {//function to test local storage
 };
 
 function main() { //function to get tasks from todo
-    var newUser = true;
+    // var newUser = true;
     if (storageAvailable() === true) { //check if local storage is available
         if (localStorage.getItem(storageKey) === null) { //if there is local storage but no todo data
             newUser = true;
@@ -33,7 +33,7 @@ function main() { //function to get tasks from todo
         }else{ //if there is local storage and there is todo data
             newUser = false;
             document.getElementById("newTaskForm").hidden = true; //hide form
-            myArray = JSON.parse(localStorage.getItem(storageKey)); //get data and parse it to array
+            //myArray = JSON.parse(localStorage.getItem(storageKey)); //get data and parse it to array
             displayList();} //function to display data
         }else{// if there is no local storage available
             alert('It seems like this browser doesn\'t support local storage. Please switch to a new device or browser');
@@ -82,6 +82,7 @@ function getNewTask() {//creates object from user input, adds object to myArray,
 }
 
 function displayList() { //function to display data
+    myArray = JSON.parse(localStorage.getItem(storageKey)); //get data and parse it to array
     var myString;
     for (var i = 0; i < myArray.length; i++) { 
         //define variables for each
@@ -110,21 +111,25 @@ function displayList() { //function to display data
 };
     
 function removeCompleted() {//function to remove checked items
-    var check = document.getElementsByClassName("removeTask");
-    var del = [];//Array.from(checked);
-    for (var i = 0; check[i]; i++) {
-        if (check[i].checked) {
-        index = check[i].value;
+    var checkBox = document.getElementsByClassName("removeTask");
+    var del = [];
+    for (var i = 0; checkBox[i]; i++) {
+        if (checkBox[i].checked) {
+        index = checkBox[i].value;
         del.push(index);
         }
     };
-    console.log(del);
-    debugger;
+            //console.log(del);
     while (del.length > 0) {
-        myArray.splice(i, 1);
         var i = del.pop();
-
+        myArray.splice(i, 1);
       };
+    
+    if (myArray.length === 0){//clear tododata div if there are no tasks
+        document.getElementById('toDoData').innerHTML = null;
+    }
+    //save changes in local storage
+    localStorage.setItem(storageKey, JSON.stringify(myArray));
     displayList();
 };
 
