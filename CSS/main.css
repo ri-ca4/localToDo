@@ -1,19 +1,116 @@
+body {
+    background: rgb(100,51,179);
+    background: linear-gradient(90deg, rgba(100,51,179,1) 0%, rgba(0,53,128,1) 11%, rgba(142,200,190,1) 43%, rgba(0,53,128,1) 72%, rgba(0,53,128,1) 79%, rgba(100,51,179,1) 94%);
+}
+
+h1, .taskItem, #showForm, #paraHide, a {
+    font-family: 'Indie Flower', cursive;
+}
+
+a, label {
+    font-size: 1.5em;
+    color: #ffffff;
+}
+
+h1 {
+    font-size: 5em;
+    color: #ffffff;
+}
+
 .priority1 {
-    color: green;
+    background-color: #808080;
+    color: #ffffff;
 }
 
 .priority2 {
-    color: rgb(128, 128, 0);
+    background-color: #008b8b;
+    color: #ffffff;
 }
 
 .priority3 {
-    color: rgb(217, 231, 15);
+    background-color: #bfcd00;
+    color: #ffffff;
 }
 
 .priority4 {
-    color: rgb(128, 85, 0);
+    background-color: #ff6200;
+    color:#ffffff;
 }
 
 .priority5 {
-    color: rgb(128, 28, 0);
+    background-color: #801c00;
+    color: #ffffff;
+}
+
+.btn-del {
+    background-color: #003580;
+    color: #ffffff;
+}
+
+.btn-prior {
+    background-color: #6433b3;
+    color: #ffffff;
+}
+
+.btn-time {
+    background-color: #008069;
+    color: #ffffff;
+}
+
+.btn-clear {
+    background-color: #2a3b53;
+    color: #ffffff;
+}
+
+.btn-add {
+    background-color: #003580;
+    color: #ffffff;
+}
+
+#toDoData:first-child {
+    margin-top: 1em;
+}
+
+.itemDiv {
+    width: 100%;
+    padding: 1em;
+    border-radius: .5em;
+}
+
+.taskDiv {
+    display: flex;
+    width: 100%;
+    border-radius: .5em;
+    align-items: center;
+    justify-content: baseline;
+    background-color:#f8f8ffae
+}
+
+.deadline {
+    border: 1px solid;
+    border-radius: .5em;
+    font-style:italic;
+    font-size: medium;
+}
+
+input[type="checkbox"] {
+    margin: 1em;
+    width: 2em;
+    height: 2em;
+    border: 0.15em solid #000000;
+    border-radius: 0.15em;
+  }
+
+.taskItem {
+    font-size: x-large;
+}
+
+.descriptionDiv {
+    font-size: medium;
+    width: 100%;
+    border-radius: .5em;
+    text-align: center;
+    margin-bottom: 1em;
+    background-color: #6494ed46;
+    color:#ffffff;
 }

@@ -2,7 +2,7 @@
 
 /*
     Author: Riley Eyrich
-    Date: 4/02/2022
+    Date: 4/11/2022
     Title: To Do w/ Local Storage
 */
 
@@ -64,7 +64,7 @@ function getNewTask() {//creates object from user input, adds object to myArray,
 
 function displayList() { //function to display data
     myArray = JSON.parse(localStorage.getItem(storageKey)); //get data and parse it to array
-    var myString;
+    var myString = '';
         if (myArray.length == 0){
             alert('You have no current tasks!');
             document.getElementById('paraHide').hidden = true;
@@ -78,11 +78,11 @@ function displayList() { //function to display data
                 var priorityLevel = myArray[i].priority;
                 var removalIndex = i;
                 //create string to be innerhtml of tododata and append
-                var string = `<span class="priority${priorityLevel}">`
+                var string = `<div class="itemDiv"><div class="taskDiv">`
+                +`<p class="deadline priority${priorityLevel}">${deadline}</p>`
                 +`<input type="checkbox" class="removeTask" value="${removalIndex}">`
-                +`<p class="taskItem">${taskName}</p>`
-                +`<p id="taskDescrip">${descrip}</p>`
-                +`<p class=deadline>${deadline}</p></span>`;
+                +`<p class="taskItem">${taskName}</p></div>`
+                +`<div class="descriptionDiv"><p class="taskDescrip">${descrip}</p></div></div>`;
                 myString += string;
                 document.getElementById('toDoData').innerHTML = myString;
             };
@@ -112,6 +112,7 @@ function removeCompleted() {//function to remove checked items
     displayList();
 };
 
+
 //event listener for submit button
 var submitBtn = document.getElementById("submitTask");
 submitBtn.addEventListener('click', function(e){
@@ -137,7 +138,7 @@ hideForm.addEventListener('click', function(){
 var sortP = document.getElementById('sortPriority');
 sortP.addEventListener('click', function(){
     myArray.sort(function(a, b) {
-        return a.priority - b.priority;
+        return b.priority - a.priority;
       });
     localStorage.setItem(storageKey, JSON.stringify(myArray));
     displayList();
