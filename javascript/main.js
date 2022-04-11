@@ -24,7 +24,7 @@ function storageAvailable() {//function to test local storage
 function main() { //function to get tasks from todo
     if (storageAvailable() === true) { //check if local storage is available
         if (localStorage.getItem(storageKey) === null) { //if there is local storage but no todo data
-            alert('Welcome! This To-Do uses the local storage on your browser which means that you can keep coming back without worrying about losing your progress (no log in needed!). This also means that all of your data can be accessed offline. Go ahead and add a task to give it a try!');
+////////////alert('Welcome! This To-Do uses the local storage on your browser which means that you can keep coming back without worrying about losing your progress (no log in needed!). This also means that all of your data can be accessed offline. Go ahead and add a task to give it a try!');
             document.getElementById('paraHide').hidden = true;
             document.getElementById('newTaskForm').hidden = false;
             document.getElementById('toDoArea').hidden = true;
@@ -64,7 +64,7 @@ function getNewTask() {//creates object from user input, adds object to myArray,
 
 function displayList() { //function to display data
     myArray = JSON.parse(localStorage.getItem(storageKey)); //get data and parse it to array
-    var myString;
+    var myString = '';
         if (myArray.length == 0){
             alert('You have no current tasks!');
             document.getElementById('paraHide').hidden = true;
@@ -111,6 +111,7 @@ function removeCompleted() {//function to remove checked items
     localStorage.setItem(storageKey, JSON.stringify(myArray));
     displayList();
 };
+
 
 //event listener for submit button
 var submitBtn = document.getElementById("submitTask");

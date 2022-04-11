@@ -10,76 +10,79 @@
         <title>My To Do</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--<link rel="stylesheet" href="C:\Users\justm\Desktop\cbc14\localToDo\CSS\bootstrap.min.css">-->
+        <link rel="stylesheet" href="C:\Users\justm\Desktop\cbc14\localToDo\CSS\bootstrap.min.css">
         <link rel="stylesheet" href="C:\Users\justm\Desktop\cbc14\localToDo\CSS\main.css">
     </head>
     <body onload="main();">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-            <div>
-                <div>
-                    <h1>To-Do</h1>
-                </div>
-                <div>
-                    <form id="newTaskForm">
-                        <p id="paraHide"><a href="#" id="hideForm">View Tasks</a></p>
-                        <fieldset>
-                            <div>
-                                <label for="taskName">Task:</label>
-                                <input type="text" id="taskName">
-                            </div>
-                            <div>
-                                <label for="descrip">Details:</label>
-                                <textarea id="descrip" maxlength="300" rows="4"></textarea>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <h1 class="text-center">To-Do</h1>
+                        <form id="newTaskForm" class="text-justify">
+                            <p id="paraHide" class=""><a href="#" id="hideForm">View Tasks</a></p>
+                                <div class="form-group">
+                                    <label for="taskName" >Task:</label>
+                                    <input type="text" id="taskName" class="form-control">
                                 </div>
-                            <div>
-                                <label for="priority"></label>
-                                <select id="priority" name="priority">
-                                    <option name="priority" value="5">Urgent</option>
-                                    <option name="priority" value="4">High</option>
-                                    <option name="priority" value="3">Normal</option>
-                                    <option name="priority" value="2">Low</option>
-                                    <option name="priority" value="1">None</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="deadline">Deadline:</label>
-                                <input id="deadline" type="date">
-                            </div>
-                            <div>
-                                <input id="submitTask" type="submit" value="Add Task" >
-                                <input id="clearForm" type="reset" value="Clear Form">
-                            </div>
-                        </fieldset>    
-                    </form>
-                </div>
-
-                <div id="toDoArea">
-                    <div>
-                    <div>
-                        <h2></h2>
-                        <p><a href="#" id="showForm">Create New Task</a></p>
+                                <div class="form-group">
+                                    <label for="descrip">Details:</label><br>
+                                    <textarea id="descrip" class="form-control" maxlength="300" rows="4"></textarea>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-4">
+                                        <label for="priority">Priority:</label>
+                                        <select id="priority" class="form-control" name="priority">
+                                            <option name="priority" value="5">Urgent</option>
+                                            <option name="priority" value="4">High</option>
+                                            <option name="priority" value="3">Normal</option>
+                                            <option name="priority" value="2">Low</option>
+                                            <option name="priority" value="1">None</option>
+                                        </select>
+                                    </div>    
+                                    <div class="form-group col-sm-8">
+                                        <label for="deadline">Deadline:</label>
+                                        <input id="deadline" class="form-control" type="date">
+                                    </div>
+                                </div>  <!--end row -->
+                                <div class="form-group">
+                                    <input id="submitTask" class="btn btn-primary" type="submit" value="Add Task">
+                                    <input id="clearForm" class="btn" type="reset" value="Clear Form">
+                                </div>
+                        </form>  
                     </div>
-                </div>
-                <div>
-                    <button id="removeTasks" onclick="removeCompleted()">Remove Completed Tasks</button>
-                    <button id="sortPriority">Sort by Priority</button>
-                    <button id="sortDate">Sort by Deadline</button>
-                </div>
-                <div>
-                    <div id="toDoData"></div>
-                    <div>
-                        <button id="removeTasks" onclick="removeCompleted()">Remove Completed Tasks</button>
+                    <div class="col-sm-3"></div>
+                </div><!--end row-->
+            </div><!--end container-->
+            <!--end of form area-->
+                <div id="toDoArea" class="container text-center">
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <h2></h2>
+                            <p><a href="#" id="showForm">Create New Task</a></p>
+                            <div>
+                                <button id="removeTasks" class="btn" onclick="removeCompleted()">Remove Completed Tasks</button><br>
+                                <button id="sortPriority" class="btn">Sort by Priority</button>
+                                <button id="sortDate" class="btn">Sort by Deadline</button>
+                            </div>
+                            <div>
+                                <div id="toDoData"></div>
+                                <div>
+                                    <button id="removeTasks" class="btn" onclick="removeCompleted()">Remove Completed Tasks</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3"></div>
                     </div>
-                </div>
-                </div>
-            </div>
-
-
+                </div><!--end container-->
+                <!--end todo area-->
 
         <script src="C:\Users\justm\Desktop\cbc14\localToDo\javascript\jquery.min.js" async defer></script>
-        <!--<script src="C:\Users\justm\Desktop\cbc14\localToDo\javascript\bootstrap.min.js" async defer></script>-->
+        <script src="C:\Users\justm\Desktop\cbc14\localToDo\javascript\bootstrap.min.js" async defer></script>
         <script src="C:\Users\justm\Desktop\cbc14\localToDo\javascript\main.js" async defer></script>
     </body>
 </html>
