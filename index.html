@@ -49,7 +49,7 @@
                             </div>
                             <div>
                                 <input id="submitTask" type="submit" value="Add Task" >
-                                <input type="reset" value="Cancel">
+                                <input id="clearForm" type="reset" value="Clear Form">
                             </div>
                         </fieldset>    
                     </form>
@@ -63,14 +63,14 @@
                     </div>
                 </div>
                 <div>
-                    <button id="removeTasks">Remove Completed Tasks</button>
+                    <button id="removeTasks" onclick="removeCompleted()">Remove Completed Tasks</button>
                     <button id="sortPriority">Sort by Priority</button>
                     <button id="sortDate">Sort by Deadline</button>
                 </div>
                 <div>
                     <div id="toDoData"></div>
                     <div>
-                        <button id="removeTasks">Remove Completed Tasks</button>
+                        <button id="removeTasks" onclick="removeCompleted()">Remove Completed Tasks</button>
                     </div>
                 </div>
                 </div>
