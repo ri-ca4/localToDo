@@ -2,7 +2,7 @@
 
 /*
     Author: Riley Eyrich
-    Date: 4/02/2022
+    Date: 4/11/2022
     Title: To Do w/ Local Storage
 */
 
@@ -24,7 +24,7 @@ function storageAvailable() {//function to test local storage
 function main() { //function to get tasks from todo
     if (storageAvailable() === true) { //check if local storage is available
         if (localStorage.getItem(storageKey) === null) { //if there is local storage but no todo data
-////////////alert('Welcome! This To-Do uses the local storage on your browser which means that you can keep coming back without worrying about losing your progress (no log in needed!). This also means that all of your data can be accessed offline. Go ahead and add a task to give it a try!');
+            alert('Welcome! This To-Do uses the local storage on your browser which means that you can keep coming back without worrying about losing your progress (no log in needed!). This also means that all of your data can be accessed offline. Go ahead and add a task to give it a try!');
             document.getElementById('paraHide').hidden = true;
             document.getElementById('newTaskForm').hidden = false;
             document.getElementById('toDoArea').hidden = true;
@@ -78,11 +78,11 @@ function displayList() { //function to display data
                 var priorityLevel = myArray[i].priority;
                 var removalIndex = i;
                 //create string to be innerhtml of tododata and append
-                var string = `<span class="priority${priorityLevel}">`
+                var string = `<div class="itemDiv"><div class="taskDiv">`
+                +`<p class="deadline priority${priorityLevel}">${deadline}</p>`
                 +`<input type="checkbox" class="removeTask" value="${removalIndex}">`
-                +`<p class="taskItem">${taskName}</p>`
-                +`<p id="taskDescrip">${descrip}</p>`
-                +`<p class=deadline>${deadline}</p></span>`;
+                +`<p class="taskItem">${taskName}</p></div>`
+                +`<div class="descriptionDiv"><p class="taskDescrip">${descrip}</p></div></div>`;
                 myString += string;
                 document.getElementById('toDoData').innerHTML = myString;
             };
@@ -138,7 +138,7 @@ hideForm.addEventListener('click', function(){
 var sortP = document.getElementById('sortPriority');
 sortP.addEventListener('click', function(){
     myArray.sort(function(a, b) {
-        return a.priority - b.priority;
+        return b.priority - a.priority;
       });
     localStorage.setItem(storageKey, JSON.stringify(myArray));
     displayList();
