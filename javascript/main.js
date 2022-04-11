@@ -30,7 +30,6 @@ function main() { //function to get tasks from todo
             document.getElementById('toDoArea').hidden = true;
         }else{ //if there is local storage and there is todo data
             document.getElementById("newTaskForm").hidden = true; //hide form
-            //myArray = JSON.parse(localStorage.getItem(storageKey)); >moved to displayList function
             displayList();}
         }else{// if there is no local storage available
             alert('It seems like this browser doesn\'t support local storage. Please switch to a new device or browser');
@@ -40,19 +39,16 @@ function main() { //function to get tasks from todo
 };
 
 function getNewTask() {//creates object from user input, adds object to myArray, clears input
-
     var newTask = document.getElementById('taskName').value;
     var newDescrip = document.getElementById('descrip').value;
     var newPriority = document.getElementById('priority').value;
     var newDeadline = document.getElementById('deadline').value;
-    
     //make user input into an object
     let toDoTask = new Object();
     toDoTask.task = newTask;
     toDoTask.descrip = newDescrip;
     toDoTask.priority = newPriority;
     toDoTask.deadline = newDeadline;
-
     //add task to array
     myArray.push(toDoTask);
     //send item to storage
@@ -69,45 +65,45 @@ function getNewTask() {//creates object from user input, adds object to myArray,
 function displayList() { //function to display data
     myArray = JSON.parse(localStorage.getItem(storageKey)); //get data and parse it to array
     var myString;
-    for (var i = 0; i < myArray.length; i++) { 
-        var taskName = myArray[i].task;
-        var descrip = myArray[i].descrip;
-        var deadline = myArray[i].deadline;
-        var priorityLevel = myArray[i].priority;
-        var removalIndex = i;
-        //create string to be innerhtml of tododata
-        var string = `<span class="priority${priorityLevel}">`
-        +`<input type="checkbox" class="removeTask" value="${removalIndex}">`
-        +`<p class="taskItem">${taskName}</p>`
-        +`<p id="taskDescrip">${descrip}</p>`
-        +`<p class=deadline>${deadline}</p></span>`;
-        // append string to mystring
-        myString += string;
-        // set innerhtml to mystring
-        document.getElementById('toDoData').innerHTML = myString;
-    };
-    //display todoarea
-    document.getElementById('toDoArea').hidden = false;
-    document.getElementById('newTaskForm').hidden = true;//hide form
-
-    //set class for priority
+        if (myArray.length == 0){
+            alert('You have no current tasks!');
+            document.getElementById('paraHide').hidden = true;
+            document.getElementById('newTaskForm').hidden = false;
+            document.getElementById('toDoArea').hidden = true;
+        }else{
+            for (var i = 0; i < myArray.length; i++) { 
+                var taskName = myArray[i].task;
+                var descrip = myArray[i].descrip;
+                var deadline = myArray[i].deadline;
+                var priorityLevel = myArray[i].priority;
+                var removalIndex = i;
+                //create string to be innerhtml of tododata and append
+                var string = `<span class="priority${priorityLevel}">`
+                +`<input type="checkbox" class="removeTask" value="${removalIndex}">`
+                +`<p class="taskItem">${taskName}</p>`
+                +`<p id="taskDescrip">${descrip}</p>`
+                +`<p class=deadline>${deadline}</p></span>`;
+                myString += string;
+                document.getElementById('toDoData').innerHTML = myString;
+            };
+            document.getElementById('toDoArea').hidden = false;
+            document.getElementById('newTaskForm').hidden = true;
+        };
 };
     
 function removeCompleted() {//function to remove checked items
     var checkBox = document.getElementsByClassName("removeTask");
     var del = [];
-    for (var i = 0; checkBox[i]; i++) {
+    for (var i = 0; checkBox[i]; i++) {//get indexes of checked boxes
         if (checkBox[i].checked) {
         index = checkBox[i].value;
         del.push(index);
         }
     };
-            //console.log(del);
-    while (del.length > 0) {
+    while (del.length > 0) {//pop checked tasks
         var i = del.pop();
         myArray.splice(i, 1);
       };
-    
     if (myArray.length === 0){//clear tododata div if there are no tasks
         document.getElementById('toDoData').innerHTML = null;
     }
